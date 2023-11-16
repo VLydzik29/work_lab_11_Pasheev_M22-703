@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="ru">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <title>Military Database</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+<div class="linkbar">
+<a href="/" target="_self"><h2 align="center">Военные</h2></a>
+<a href="/barraks" target="_self"><h2 align="center">Казармы</h2></a>
+</div>
+    <h1 align="center">Перечень казарм</h1>
+
+{% for barracks in barracks %}
+    <h2 align="center">{{ barracks }}</h2>
+            <table >
+                <thead>
+                    <th>
+                        ФИО
+                    </th>
+                </thead>
+                <tbody>
+                {% for military in barracks.military_set.all %}
+                <tr ><td>{{ military }}</td></tr>
+                {% endfor %}
+                </tbody>
+
+            </table>
+        {% endfor %}
+
+</body>
+</html>
